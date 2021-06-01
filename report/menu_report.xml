@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="action_report_giro"
+                string="Report Giro"
+                model="report.giro"
+                report_type="qweb-pdf"
+                file="report_giro.report_temp"
+                name="report_giro.report_temp"
+        />
+    </data>
+</odoo>

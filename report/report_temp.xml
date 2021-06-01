@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_temp">
+        <t t-call="report.external_layout">
+            <div class="page">
+                <div class="oe_structure"/>
+                    <div class="row">
+                    <center>
+                        <b>
+                            <h4>Laporan Giro</h4>
+                        </b>
+                    </center>
+                    <center>
+                        <b>
+                            Giro Tipe: <span t-esc="type"/>
+                        </b>
+                    </center>
+                </div>
+                <br/>
+
+                <t t-foreach="data.keys()" t-as="customer">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <table class="table table-condensed" style="margin-bottom:-2px">
+                                <thead >
+                                    <tr>
+                                        <th>Pelanggan: </th>
+                                        <td>
+                                            <span t-esc="customer"/>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <t t-foreach="data[customer]" t-as="giro">
+                        <table class="table table-bordered table-condensed table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><b>No Giro</b></td>
+                                    <td><b>Bank</b></td>
+                                    <td><b>Tgl JT</b></td>
+                                    <td><b>Tgl Penerimaan</b></td>
+                                    <td><b>Tgl Clearing</b></td>
+                                    <td class="text-right"><b>Total</b></td>
+                                    <td><b>Status</b></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span t-esc="giro[0]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="giro[1]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="giro[2]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="giro[3]"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="giro[4]"/>
+                                    </td>
+                                    <td class="text-right">
+                                        <span t-esc="'{:,}'.format(giro[5])"/>
+                                    </td>
+                                    <td>
+                                        <span t-esc="giro[6]"/>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered table-condensed table-striped">
+                            <tbody>
+                                <tr>
+                                    <td><b>Invoice</b></td>
+                                    <td class="text-right"><b>Total Invoice</b></td>
+                                    <td class="text-right"><b>Total Pembayaran</b></td>
+                                </tr>
+                                <t t-foreach="giro[7]" t-as="invoice">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="invoice[0]"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="'{:,}'.format(invoice[1])"/>
+                                        </td>
+                                        <td class="text-right">
+                                            <span t-esc="'{:,}'.format(invoice[2])"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>
