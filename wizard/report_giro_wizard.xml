@@ -42,7 +42,7 @@
         <menuitem id="menu_wizard_report_giro"
                   name="Laporan Giro"
                   action="action_report_giro"
-                  parent="account.menu_finance_legal_statement"
+                  parent="vit_giro.vit_giro_top_menu"
                   sequence="2"/>
     </data>
 </odoo>
